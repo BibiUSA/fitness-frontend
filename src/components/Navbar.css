@@ -1,0 +1,26 @@
+.navbar{
+    width:100vw;
+    height:9vh;
+    position: fixed;
+    bottom:0;
+    background-color: black;
+    color: rgb(180, 172, 187);
+
+    
+}
+
+.navIcons{
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    margin-top: 1vh;
+    text-align: center;
+    
+}
+
+.navLinks{
+    text-decoration: none;
+    color:  rgb(180, 172, 187);
+   
+}
+

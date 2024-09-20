@@ -1,0 +1,61 @@
+.calendar{
+    background-color: white;
+    border: 1px solid red;
+    margin-top: 10vh;
+}
+
+.days,.week{
+    display:grid;
+    grid-template-columns: repeat(7,1fr);
+    background-color: white;
+}
+
+.days :hover{
+    color:blue;
+    cursor:pointer;
+}
+.days{
+    background-color: white;
+}
+
+.eachDay,.week div{
+    
+    padding: 15px;
+    background-color: white;
+    text-align: center;
+    
+}
+
+.current-date{
+    
+    font-weight: bolder;
+    background-color: orange;
+}
+
+.selected{
+    background: white;
+  
+}
+
+.display{
+    display: flex;
+}
+
+.todayDate{
+    font-size: 2.5rem;
+}
+.todayAndMonth{
+    margin-top: 2vh;
+}
+.todayAndMonth p{
+    padding: none;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.changeMonth{
+    margin-right: 10vw;
+}

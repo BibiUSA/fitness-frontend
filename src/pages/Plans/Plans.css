@@ -1,0 +1,223 @@
+.SearchBar{
+    background-color: rgb(4, 12, 58);
+    color: white;
+    width:90vw;
+    margin-top: 3vh;
+    padding: 1vh;
+    border:0.5px solid gray;
+    border-radius: 5px;
+    font-size: 1.25rem;
+}
+
+.searchSection{
+text-align: center;
+}
+
+#allPlans{
+    height:90vh;
+    width:100vw;
+    background-color: white;
+    margin: 0 auto;
+    border-radius: 5vw;
+}
+
+#newPlanBox{
+    border:1px solid black;
+    width:100vw;
+    height:40vh;
+    box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.674);
+    border-radius: 5vw;
+    text-align: center;
+    position: fixed ;
+    top: 25vh;
+    background-color: white;
+  
+}
+
+#newPlan{
+    padding:3vw;
+    width:78vw;
+    align-self: center;
+    background-color: rgb(4, 12, 58);
+    margin-top: 13vh;
+    border-radius: 2vw;
+    font-size: 1.25rem; 
+    text-align: center;  
+    color:white; 
+}
+
+.newPlanButtons{
+   font-size: 1.25rem;
+   border: none;
+   background-color: transparent;
+    margin-top: 2vh;
+    /* display: inline-flexbox;
+    justify-content: space-between; */
+    
+    
+}
+
+.gray{
+    color:rgba(0, 0, 255, 0.324);
+}
+
+.blue{
+    color:blue;
+}
+
+#cancelNewPlan{
+    position: relative;
+    left:-10vw;
+    color:blue;
+}
+
+#addNewPlan{
+    position: relative;
+    left:10vw;
+    
+}
+
+
+#addPlan{
+    position: fixed;
+    bottom:13vh;
+    right:13vw;
+    width:70px;
+    padding: 0;
+    height:70px;
+    border-radius:50%;
+    border: white;
+    font-size: 3rem;
+    box-shadow: 5px 3px 5px   rgb(183, 168, 195);
+    color:white;
+    background-color: rgb(145, 70, 213);
+}
+.deleteButton{
+    background-color: red;
+    color:white;
+    border-radius: 50%;
+    height: 6vw;
+    width:6vw;
+    border: none;
+    font-size: 2rem;
+    margin-left: 5vw;
+  
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;  
+    font-size: 20px; /* Adjust as needed */
+    line-height: 1; 
+}
+
+.editButton{
+  
+    margin-bottom: -5vh;
+    border: none;
+    color: blue;
+    font-size: 1.25rem;
+    background-color:transparent;
+    position: relative;
+    top:3vh;
+    left:65vw;
+    margin-bottom: 3vh;
+}
+.hr{
+    width:85vw;
+    margin-bottom: 0px;
+    color:gray;
+    margin-right: 0;
+}
+.eachPlansDiv{
+    padding-top: 1vh;
+}
+.eachPlansDiv:active{
+    background-color: gray;
+}
+
+.eachPlansLine{
+   display: flex;
+}
+
+.planTitle{
+    margin-left: 10vw;
+    color:white;
+  
+}
+.eachPlans{
+    margin-left: 5vw;
+    font-size: 1.25rem;
+    list-style-type: circle;
+    width:72vw;
+    
+}
+
+li::marker{
+    font-size: 1.75rem;
+}
+
+.plansLink{
+    text-decoration: none;
+    color:black;
+}
+
+.planExistWarning{
+    color:red;
+}
+
+.confirmDelete{
+   
+    text-align: center;
+    background-color: white;
+    box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.674);
+    font-size: 1.25rem;
+    position: fixed;
+    bottom:50vh;
+    left:10vw;
+    width:80vw;
+    border-radius: 5vw;
+}
+.confirmButton{
+    border:none;
+    background-color: white;
+    padding-top: 1vh;
+    padding-bottom: 3vh;
+    font-size: 1.25rem;
+}
+
+.cancelConfirm{
+    padding-right: 25vw;
+    color:blue;
+}
+.yesConfirm{
+    color:red;
+}
+
+.scheduleIcon{
+    position:absolute;
+    right:10vw;
+}
+.scheduleCalendar{
+    width:100vw;
+    position: relative;
+    background-color: white;
+    box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.674);
+}
+
+.scheduleCalendarTitle{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 3vw;
+    margin-right: 3vw;
+}
+
+.scheduleCalendarTitle button{
+border: none;
+background-color: transparent;
+color: blue;
+}
+
+.hidden{
+    display:none;
+}

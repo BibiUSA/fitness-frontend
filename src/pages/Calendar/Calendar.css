@@ -1,0 +1,113 @@
+.weekly-calendar {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    
+  }
+  
+  .calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1vh;
+    margin-bottom: 2vh;
+    color:white;
+    margin-left: 5vw;
+    margin-right: 5vw;
+  }
+  
+   .calendar-body {
+    background-color: white;
+  }  
+  /* might not be needed */
+
+  .scheduledPlan{
+    border-radius: 2vw;
+   width: 40%;
+    padding: 1.65vh;
+    text-align: center;
+    margin-bottom: 0.25vh;
+    background-color: rgb(254, 74, 122);
+    color: white;
+    /* position: relative; */
+    z-index:1;
+    
+    }
+
+ .dailyTask{
+  display:flex;
+  flex-direction: column;
+  /* position: relative; */
+  max-height: 9vh;
+  margin-top: 2vh;
+
+ }
+
+  .delete{
+    /* background-color: rgb(254, 74, 122); */
+    border-radius: 2vw;
+    color:gray;
+    width:40%;
+    text-align: center;
+    padding-left: 1.65vh;
+    padding-right: 1.65vh;
+    /* position: relative; */
+    z-index: 1;
+   
+
+  }
+  
+ 
+  
+  .week {
+    display: flex;
+    flex-direction: column;
+   
+   
+  }
+  
+  .day {
+    height: 11vh;
+    /* border-bottom: 1px solid black; */
+    
+    border: 0.5px solid rgba(128, 128, 128, 0.245);
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    border-radius: 3vw;
+    box-shadow: 0 0 5px  gray;
+    
+   /* position: relative; */
+   /* overflow: hidden; */
+  }
+  .date{
+    /* border:2px solid green; */
+    width:16vw;
+    
+    text-align: center;
+    background-color: rgba(253, 194, 50);
+    height: 11vh;
+    /* margin-top: 0.5vh; */
+    border-radius: 3vw;
+
+    
+  }
+  .today{
+     /* border:2px solid green; */
+     width:16vw;
+    
+     text-align: center;
+     background-color: rgba(9, 159, 254);
+     height: 11vh;
+     /* margin-top: 0.5vh; */
+     border-radius: 3vw;
+  }
+  
+  /* .plans {
+   
+    border: 1px solid blue;
+    height:11vh;
+    
+   
+    
+  } */
+  
