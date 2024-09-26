@@ -16,7 +16,7 @@ export default function MonthlyCalendar(data) {
   const checkPlanScheduled = async () => {
     try {
       const result = await axios.get(
-        `http://localhost:3001/api/${data.plan + date}`,
+        `https://fitness-backend-je4w.onrender.com/api/${data.plan + date}`,
         {
           params: { email: data.email },
         }
@@ -29,7 +29,7 @@ export default function MonthlyCalendar(data) {
       if (result.data.data.length < 1) {
         try {
           const response = await axios.get(
-            `http://localhost:3001/api/${data.plan}`,
+            `https://fitness-backend-je4w.onrender.com/api/${data.plan}`,
             {
               params: { email: data.email },
             }
@@ -48,7 +48,7 @@ export default function MonthlyCalendar(data) {
             //sending request to add the plan to the date that we need
             try {
               const result = await axios.post(
-                "http://localhost:3001/calendar/add",
+                "https://fitness-backend-je4w.onrender.com/calendar/add",
                 {
                   values: values,
                 }

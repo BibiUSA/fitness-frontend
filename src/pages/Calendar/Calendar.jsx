@@ -36,7 +36,7 @@ const Calendar = () => {
       };
       if (token != null) {
         const response = await axios.post(
-          "http://localhost:3001/account/protect",
+          "https://fitness-backend-je4w.onrender.com/account/protect",
           {},
           {
             headers: headers,
@@ -67,12 +67,15 @@ const Calendar = () => {
 
   const fetchAPI = async () => {
     try {
-      const response = await axios.get(`http://localhost:3001/calendar`, {
-        params: {
-          dates: dates,
-          email: email,
-        },
-      });
+      const response = await axios.get(
+        `https://fitness-backend-je4w.onrender.com/calendar`,
+        {
+          params: {
+            dates: dates,
+            email: email,
+          },
+        }
+      );
       // console.log(response.data.data.rows);
       setData(response.data.data.rows);
     } catch (error) {
@@ -104,7 +107,7 @@ const Calendar = () => {
     console.log("clicked");
     try {
       const response = await axios.delete(
-        `http://localhost:3001/calendar/${planDates.plan}`
+        `https://fitness-backend-je4w.onrender.com/calendar/${planDates.plan}`
       );
       fetchAPI(); //called to refresh the page
       console.log(response);

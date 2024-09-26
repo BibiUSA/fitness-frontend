@@ -2,7 +2,7 @@
   "name": "fitness-planner",
   "private": true,
   "version": "0.0.0",
-  "proxy": "http://localhost:3001",
+  "proxy": "https://fitness-backend-je4w.onrender.com",
   "type": "module",
   "scripts": {
     "dev": "vite",

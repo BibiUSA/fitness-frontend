@@ -23,7 +23,7 @@ export default function Settings() {
       };
       if (token != null) {
         const response = await axios.post(
-          "http://localhost:3001/account/protect",
+          "https://fitness-backend-je4w.onrender.com/account/protect",
           {},
           {
             headers: headers,
@@ -47,7 +47,7 @@ export default function Settings() {
   const removeAllPlans = async () => {
     try {
       const response = await axios.delete(
-        `http://localhost:3001/account/${email}`
+        `https://fitness-backend-je4w.onrender.com/account/${email}`
       );
       console.log(response);
     } catch (error) {
@@ -58,7 +58,7 @@ export default function Settings() {
   const removeAccount = async () => {
     try {
       const response = await axios.delete(
-        `http://localhost:3001/account/remove/${email}`
+        `https://fitness-backend-je4w.onrender.com/account/remove/${email}`
       );
       console.log(response);
     } catch (error) {
@@ -99,11 +99,14 @@ export default function Settings() {
 
   const saveName = async () => {
     try {
-      const response = axios.post("http://localhost:3001/account/addName", {
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-      });
+      const response = axios.post(
+        "https://fitness-backend-je4w.onrender.com/account/addName",
+        {
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+        }
+      );
     } catch (error) {
       console.log(error);
     }

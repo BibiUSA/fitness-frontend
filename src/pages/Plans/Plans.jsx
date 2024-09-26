@@ -49,7 +49,7 @@ export default function Plans() {
       };
       if (token != null) {
         const response = await axios.post(
-          "http://localhost:3001/account/protect",
+          "https://fitness-backend-je4w.onrender.com/account/protect",
           {},
           {
             headers: headers,
@@ -71,7 +71,7 @@ export default function Plans() {
     const userEmail = await tokenLogging(); //checks to make sure tokenLogging is ran first fully
     if (userEmail) {
       const response = await axios.get(
-        "http://localhost:3001/plans",
+        "https://fitness-backend-je4w.onrender.com/plans",
 
         {
           params: { email: userEmail.email },
@@ -94,7 +94,7 @@ export default function Plans() {
 
     try {
       const response = await axios.delete(
-        `http://localhost:3001/plans/${delPlanId}`
+        `https://fitness-backend-je4w.onrender.com/plans/${delPlanId}`
       );
       setPlansAdded(plansAdded + 1);
     } catch (error) {
@@ -183,10 +183,13 @@ export default function Plans() {
       return;
     } else {
       try {
-        const response = await axios.post("http://localhost:3001/plans", {
-          plan: newPlanInput,
-          task: "1995ActuallyAPlan", //used only for plans
-        });
+        const response = await axios.post(
+          "https://fitness-backend-je4w.onrender.com/plans",
+          {
+            plan: newPlanInput,
+            task: "1995ActuallyAPlan", //used only for plans
+          }
+        );
         console.log(response);
       } catch (error) {
         console.log("error", error);
