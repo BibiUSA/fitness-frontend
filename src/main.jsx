@@ -5,7 +5,7 @@ import "./index.css";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { disableReactDevTools } from "@fvilers/disable-react-devtools";
 
-if (process.env.NODE_ENV === "production") disableReactDevTools();
+// if (process.env.NODE_ENV === "production") disableReactDevTools();
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
