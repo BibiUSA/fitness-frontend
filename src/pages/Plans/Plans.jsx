@@ -3,7 +3,6 @@ import { useState, useEffect, useContext, useRef } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import MonthlyCalendar from "../../components/MonthlyCalendar";
-import { event } from "jquery";
 // import Calendar from "react-calendar";
 // import "react-calendar/dist/Calendar.css";
 
