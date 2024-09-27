@@ -14,7 +14,7 @@ function App() {
   const [accountEmail, setAccountEmail] = useState(null);
   return (
     <div id="app">
-      <BrowserRouter basename="/">
+      <BrowserRouter>
         <Routes>
           <Route path="/create/:plan" element={<Create />} />
           <Route path="/plans" element={<Plans />} />
