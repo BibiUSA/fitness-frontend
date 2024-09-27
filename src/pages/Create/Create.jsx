@@ -63,12 +63,14 @@ export default function Create() {
   }, []);
 
   console.log(backendData);
+  console.log(planName);
 
   // axios.post("/create", {});
   //sends data to back end and data base
   const handleChange = async (event) => {
     if (event.key === "Enter") {
       console.log("sending");
+      event.preventDefault();
       try {
         const response = await axios.post(
           "https://fitness-backend-je4w.onrender.com/api/create",
@@ -79,8 +81,9 @@ export default function Create() {
             email: backendData[0].email,
           }
         );
-
         console.log(response);
+        event.target.value = "";
+        fetchAPI();
       } catch (error) {
         console.log("error", error);
       }
