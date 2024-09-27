@@ -11,14 +11,14 @@
      width:100vw;
     margin: 0 auto;
     margin-top: 5%;
+    padding-top: 3vh;
     border-radius: 5vw;
    }
 
    #newAction{
     width:70vw;
     margin-left: 5vw;
-    margin-top: 3vh;
-    padding-top: 5vh;
+    padding-top: 2vh;
     background-color: white;
     border: none;
     display: list-item;

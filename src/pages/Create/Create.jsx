@@ -134,18 +134,19 @@ export default function Create() {
       <h1 className="planName">{planName}</h1>
       <div id="planMaker">
         {/* <input type="text" className="planName" value={planChange} />  future feature  */}
+
+        <p></p>
+        {toDoTasks}
         <form>
           <input
             type="text"
             name="newAction"
             id="newAction"
-            placeholder="ADD NEW TASKS"
+            placeholder="ADD NEW TASKS HERE"
             onKeyDown={handleChange}
           ></input>
         </form>
         <hr className="line"></hr>
-        <p></p>
-        {toDoTasks}
       </div>
     </div>
   );
