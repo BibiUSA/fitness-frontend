@@ -23,7 +23,7 @@ export default function Settings() {
       };
       if (token != null) {
         const response = await axios.post(
-          "https://fitness-backend-je4w.onrender.com/account/protect",
+          `https://fitness-backend-je4w.onrender.com/account/protect`,
           {},
           {
             headers: headers,

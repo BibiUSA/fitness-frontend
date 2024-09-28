@@ -66,7 +66,6 @@ const Calendar = () => {
   //to get data of all plans in the dates
 
   const fetchAPI = async () => {
-    console.log(dates);
     try {
       const response = await axios.get(
         `https://fitness-backend-je4w.onrender.com/calendar`,
@@ -77,7 +76,7 @@ const Calendar = () => {
           },
         }
       );
-      console.log(response.data.data.rows);
+      // console.log(response.data.data.rows);
       setData(response.data.data.rows);
     } catch (error) {
       console.log(error);
@@ -105,7 +104,7 @@ const Calendar = () => {
   };
   //deletes the specific plan scheduled for that day
   const deleteScheduledPlan = async (planDates) => {
-    console.log(planDates);
+    console.log("clicked");
     try {
       const response = await axios.delete(
         `https://fitness-backend-je4w.onrender.com/calendar/${planDates.plan}`
@@ -130,22 +129,13 @@ const Calendar = () => {
       }
     };
 
-    // const planDates = data.find(
-    //   (d) => d.date_scheduled.slice(8, 10) === format(day, "dd")
-    // );
-    const hasTask = [];
-    data.forEach((d) => {
-      if (d.date_scheduled.slice(8, 10) === format(day, "dd")) {
-        hasTask.push(d);
-      }
-    });
-
-    // console.log("planDates", planDates);
-
+    const planDates = data.find(
+      (d) => d.date_scheduled.slice(8, 10) === format(day, "dd")
+    );
     const date = new Date(day);
     const dayName = date.toLocaleDateString("en-US", { weekday: "short" });
     //if plan is scheduled, then it is shown
-    if (hasTask.length > 0) {
+    if (planDates) {
       return (
         <div key={day.toString()} className="day">
           <div className={findToday()}>
@@ -153,23 +143,20 @@ const Calendar = () => {
             {dayName}
           </div>
 
-          {hasTask.map((item) => {
-            return (
-              <section className="dailyTask">
-                <Link to={`/create/${item.plan}`} className="scheduledPlan">
-                  {/* <div className="scheduledPlan"> */}
-                  {item.plan.slice(0, -10)}
-                  {/* </div> */}
-                </Link>
-                <div
-                  className="delete"
-                  onClick={() => deleteScheduledPlan(item)}
-                >
-                  Delete
-                </div>
-              </section>
-            );
-          })}
+          {/* plan that is scheduled for that day */}
+          <section className="dailyTask">
+            <Link to={`/create/${planDates.plan}`} className="scheduledPlan">
+              {/* <div className="scheduledPlan"> */}
+              {planDates.plan.slice(0, -10)}
+              {/* </div> */}
+            </Link>
+            <div
+              className="delete"
+              onClick={() => deleteScheduledPlan(planDates)}
+            >
+              Delete
+            </div>
+          </section>
         </div>
       );
     } else {
@@ -184,8 +171,6 @@ const Calendar = () => {
       );
     }
   });
-
-  console.log(data);
   console.log(week[0]);
 
   const time = (index) => {
@@ -233,3 +218,5 @@ const Calendar = () => {
 };
 
 export default Calendar;
+
+//CODE BEFORE WORKING ON TRYING TO ADD THREE EVENTS IN A DAY

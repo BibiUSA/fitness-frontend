@@ -200,9 +200,11 @@ li::marker{
 }
 .scheduleCalendar{
     width:100vw;
-    position: relative;
+    position: absolute;
+    bottom:25vh;
     background-color: white;
     box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.674);
+
 }
 
 .scheduleCalendarTitle{

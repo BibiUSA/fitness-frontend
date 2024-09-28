@@ -12,6 +12,8 @@ import Settings from "./pages/Settings/Settings.jsx";
 
 function App() {
   const [accountEmail, setAccountEmail] = useState(null);
+  // const backendUrl = "http://localhost:3001";
+  // https://fitness-backend-je4w.onrender.com
   return (
     <div id="app">
       <BrowserRouter>

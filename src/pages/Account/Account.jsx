@@ -3,6 +3,7 @@ import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
+
 // import api from "../../api";
 
 export default function Account() {
@@ -19,7 +20,7 @@ export default function Account() {
       console.log("email sent");
       try {
         const response = await axios.post(
-          "https://fitness-backend-je4w.onrender.com/account",
+          `https://fitness-backend-je4w.onrender.com/account`,
           {
             email: email,
           },
@@ -45,7 +46,7 @@ export default function Account() {
       };
       if (token != null) {
         const response = await axios.post(
-          "https://fitness-backend-je4w.onrender.com/account/protect",
+          `https://fitness-backend-je4w.onrender.com/account/protect`,
           {},
           {
             headers: headers,

@@ -3,6 +3,7 @@ import { useState, useEffect, useContext, useRef } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import MonthlyCalendar from "../../components/MonthlyCalendar";
+
 // import Calendar from "react-calendar";
 // import "react-calendar/dist/Calendar.css";
 
@@ -48,7 +49,7 @@ export default function Plans() {
       };
       if (token != null) {
         const response = await axios.post(
-          "https://fitness-backend-je4w.onrender.com/account/protect",
+          `https://fitness-backend-je4w.onrender.com/account/protect`,
           {},
           {
             headers: headers,
@@ -70,7 +71,7 @@ export default function Plans() {
     const userEmail = await tokenLogging(); //checks to make sure tokenLogging is ran first fully
     if (userEmail) {
       const response = await axios.get(
-        "https://fitness-backend-je4w.onrender.com/plans",
+        `https://fitness-backend-je4w.onrender.com/plans`,
 
         {
           params: { email: userEmail.email },
@@ -183,7 +184,7 @@ export default function Plans() {
     } else {
       try {
         const response = await axios.post(
-          "https://fitness-backend-je4w.onrender.com/plans",
+          `https://fitness-backend-je4w.onrender.com/plans`,
           {
             plan: newPlanInput,
             task: "1995ActuallyAPlan", //used only for plans

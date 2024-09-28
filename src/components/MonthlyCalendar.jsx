@@ -7,6 +7,8 @@ import axios from "axios";
 export default function MonthlyCalendar(data) {
   const [date, setDate] = useState("");
   const [scheduled, setScheduled] = useState("hidden");
+  const [planNum, setPlanNum] = useState(0);
+  const [planLength, setPlanLength] = useState(0);
   console.log(data);
   // if (data.email === null) {
   //   window.location = "/account";
@@ -21,12 +23,13 @@ export default function MonthlyCalendar(data) {
           params: { email: data.email },
         }
       );
-      console.log(result.data.data.length);
+      //if more than one, the plan already scheduled for that day
+      const planReady = result.data.data.length;
+      // setPlanLength(planReady); MAY BE USE IN THE FUTURE TO CHECK THAT PLAN IS ALREADY SCHEDULED OR IF TOO MANY PLANS
       // };
 
-      // console.log("CHECK", data.plan);
-      // const addPlanToDate = async () => {
-      if (result.data.data.length < 1) {
+      //gets all the tasks in that plan and adds it to the date
+      if (planReady < 1) {
         try {
           const response = await axios.get(
             `https://fitness-backend-je4w.onrender.com/api/${data.plan}`,
@@ -48,7 +51,7 @@ export default function MonthlyCalendar(data) {
             //sending request to add the plan to the date that we need
             try {
               const result = await axios.post(
-                "https://fitness-backend-je4w.onrender.com/calendar/add",
+                `https://fitness-backend-je4w.onrender.com/calendar/add`,
                 {
                   values: values,
                 }
@@ -72,6 +75,7 @@ export default function MonthlyCalendar(data) {
     }
   };
 
+  //when clicked, the date gets set. Which triggers the function to check if the plan is already scheduled.
   function handleChange(event) {
     console.log(event.toISOString().split("T")[0]);
     setDate(event.toISOString().split("T")[0]); //need to wait till this state is set
@@ -85,12 +89,38 @@ export default function MonthlyCalendar(data) {
     //same as task name
   }
 
+  //MAY BE IN FUTURE TO SEE IF THERE ARE TOO MANY PLANS
+  // const seeNumberOfPlans = async () => {
+  //   console.log(date);
+  //   try {
+  //     const response = await axios.get(`https://fitness-backend-je4w.onrender.com/calendar`, {
+  //       params: {
+  //         dates: `'${date}'`,
+  //         email: data.email,
+  //       },
+  //     });
+  //     // console.log(response.data.data.rows);
+  //     console.log("HERE", response.data.data.rows);
+  //     setPlanNum = response.data.data.rows.length;
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
   useEffect(() => {
+    // const scheduling = async () => {
+    //   try {
+    //     await Promise.all([checkPlanScheduled(), seeNumberOfPlans()]);
+    //     console.log(planLength);
+    //     console.log(planNum);
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // };
+    // scheduling();
     checkPlanScheduled();
-    // addPlanToDate();
   }, [date]);
   console.log(data.plan);
-  console.log(data.email);
 
   return (
     <>

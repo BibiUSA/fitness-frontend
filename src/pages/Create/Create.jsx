@@ -11,7 +11,6 @@ export default function Create() {
   }
 
   const { plan } = useParams();
-  console.log(plan);
 
   const [backendData, setBackendData] = useState([1]);
   const [inputValue, setInputValue] = useState("");
@@ -39,7 +38,7 @@ export default function Create() {
       };
       if (token != null) {
         const response = await axios.post(
-          "https://fitness-backend-je4w.onrender.com/account/protect",
+          `https://fitness-backend-je4w.onrender.com/account/protect`,
           {},
           {
             headers: headers,
@@ -73,7 +72,7 @@ export default function Create() {
       event.preventDefault();
       try {
         const response = await axios.post(
-          "https://fitness-backend-je4w.onrender.com/api/create",
+          `https://fitness-backend-je4w.onrender.com/api/create`,
           {
             data: event.target.value,
             plan: planName,
