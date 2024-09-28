@@ -5,6 +5,7 @@
     bottom:0;
     background-color: black;
     color: rgb(180, 172, 187);
+    z-index: 2;
 
     
 }

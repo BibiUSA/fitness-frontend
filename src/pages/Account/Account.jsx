@@ -68,7 +68,7 @@ export default function Account() {
       <div className="accountBox">
         <h2>Make a Plan.</h2>
         <h2>Hit your Goals.</h2>
-        <img src="/public/assets/gym.jpeg" id="illustration" />
+        <img src="./assets/gym.jpeg" id="illustration" />
 
         <p>Log in to get started!</p>
         <div className="google">
