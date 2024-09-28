@@ -23,12 +23,16 @@
 
   .scheduledPlan{
     border-radius: 2vw;
-   width: 40%;
-    padding: 1.65vh;
+   width: 70%;
+   height:5vh;
+    /* padding: 1.65vh; */
     text-align: center;
     margin-bottom: 0.25vh;
     background-color: rgb(254, 74, 122);
     color: white;
+    display: flex;
+  justify-content: center;
+  flex-direction: column;
     /* position: relative; */
     z-index:1;
     
