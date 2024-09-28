@@ -9,7 +9,7 @@ export default function MonthlyCalendar(data) {
   const [scheduled, setScheduled] = useState("hidden");
   const [planNum, setPlanNum] = useState(0);
   const [planLength, setPlanLength] = useState(0);
-  console.log(data);
+  //console.log(data);
   // if (data.email === null) {
   //   window.location = "/account";
   // }
@@ -37,7 +37,7 @@ export default function MonthlyCalendar(data) {
               params: { email: data.email },
             }
           );
-          console.log(response.data.data);
+          //console.log(response.data.data);
           if (response.data.data) {
             let planData = response.data.data;
             let values = "";
@@ -47,7 +47,7 @@ export default function MonthlyCalendar(data) {
                 values += ",\n";
               }
             }
-            console.log(values);
+            //console.log(values);
             //sending request to add the plan to the date that we need
             try {
               const result = await axios.post(
@@ -57,27 +57,27 @@ export default function MonthlyCalendar(data) {
                 }
               );
               data.onClick(); //closes the window usiing function from the parent component-plan.jsx
-              console.log(response);
+              //console.log(response);
             } catch (error) {
-              console.log("error", error);
+              //console.log("error", error);
             }
           }
         } catch (error) {
-          console.log("error", error);
+          //console.log("error", error);
         }
       } else {
-        // console.log("already scheduled for the date");
+        // //console.log("already scheduled for the date");
         setScheduled("scheduled");
       }
     } catch (error) {
-      console.log(error);
+      //console.log(error);
       // window.location = "/account";
     }
   };
 
   //when clicked, the date gets set. Which triggers the function to check if the plan is already scheduled.
   function handleChange(event) {
-    console.log(event.toISOString().split("T")[0]);
+    //console.log(event.toISOString().split("T")[0]);
     setDate(event.toISOString().split("T")[0]); //need to wait till this state is set
     //need to comment this out so the date is goint through
 
@@ -91,7 +91,7 @@ export default function MonthlyCalendar(data) {
 
   //MAY BE IN FUTURE TO SEE IF THERE ARE TOO MANY PLANS
   // const seeNumberOfPlans = async () => {
-  //   console.log(date);
+  //   //console.log(date);
   //   try {
   //     const response = await axios.get(`https://fitness-backend-je4w.onrender.com/calendar`, {
   //       params: {
@@ -99,11 +99,11 @@ export default function MonthlyCalendar(data) {
   //         email: data.email,
   //       },
   //     });
-  //     // console.log(response.data.data.rows);
-  //     console.log("HERE", response.data.data.rows);
+  //     // //console.log(response.data.data.rows);
+  //     //console.log("HERE", response.data.data.rows);
   //     setPlanNum = response.data.data.rows.length;
   //   } catch (error) {
-  //     console.log(error);
+  //     //console.log(error);
   //   }
   // };
 
@@ -111,16 +111,16 @@ export default function MonthlyCalendar(data) {
     // const scheduling = async () => {
     //   try {
     //     await Promise.all([checkPlanScheduled(), seeNumberOfPlans()]);
-    //     console.log(planLength);
-    //     console.log(planNum);
+    //     //console.log(planLength);
+    //     //console.log(planNum);
     //   } catch (error) {
-    //     console.log(error);
+    //     //console.log(error);
     //   }
     // };
     // scheduling();
     checkPlanScheduled();
   }, [date]);
-  console.log(data.plan);
+  //console.log(data.plan);
 
   return (
     <>
