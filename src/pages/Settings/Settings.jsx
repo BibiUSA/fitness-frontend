@@ -151,6 +151,7 @@ export default function Settings() {
         }}
       >
         <p>Profile</p>
+
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -158,15 +159,13 @@ export default function Settings() {
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-right"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-down"
         >
           <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path d="M5 12l14 0" />
-          <path d="M15 16l4 -4" />
-          <path d="M15 8l4 4" />
+          <path d="M6 9l6 6l6 -6" />
         </svg>
       </div>
       <div className={`${profileSetting} "names"`}>
@@ -215,15 +214,13 @@ export default function Settings() {
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-right"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-down"
         >
           <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path d="M5 12l14 0" />
-          <path d="M15 16l4 -4" />
-          <path d="M15 8l4 4" />
+          <path d="M6 9l6 6l6 -6" />
         </svg>
       </div>
       <input
@@ -246,15 +243,13 @@ export default function Settings() {
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-right"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-down"
         >
           <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path d="M5 12l14 0" />
-          <path d="M15 16l4 -4" />
-          <path d="M15 8l4 4" />
+          <path d="M6 9l6 6l6 -6" />
         </svg>
       </div>
       <input
@@ -272,15 +267,13 @@ export default function Settings() {
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-right"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-down"
         >
           <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path d="M5 12l14 0" />
-          <path d="M15 16l4 -4" />
-          <path d="M15 8l4 4" />
+          <path d="M6 9l6 6l6 -6" />
         </svg>
       </div>
       <p>
