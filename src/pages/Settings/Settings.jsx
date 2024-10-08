@@ -15,7 +15,7 @@ export default function Settings() {
   const [profileSetting, setProfileSetting] = useState("hidden");
 
   const tokenLogging = async () => {
-    //console.log("tokenLoggin");
+    console.log("tokenLoggin");
     try {
       const token = localStorage.getItem("auth_token");
       const headers = {
@@ -34,7 +34,7 @@ export default function Settings() {
         window.location = "/account";
       }
     } catch (error) {
-      //console.log(error);
+      console.log(error);
     }
   };
 
@@ -42,16 +42,16 @@ export default function Settings() {
     tokenLogging();
   }, []);
 
-  //console.log(email);
+  console.log(email);
 
   const removeAllPlans = async () => {
     try {
       const response = await axios.delete(
         `https://fitness-backend-je4w.onrender.com/account/${email}`
       );
-      //console.log(response);
+      console.log(response);
     } catch (error) {
-      //console.log(error);
+      console.log(error);
     }
   };
 
@@ -60,9 +60,9 @@ export default function Settings() {
       const response = await axios.delete(
         `https://fitness-backend-je4w.onrender.com/account/remove/${email}`
       );
-      //console.log(response);
+      console.log(response);
     } catch (error) {
-      //console.log(error);
+      console.log(error);
     }
   };
 
@@ -108,7 +108,7 @@ export default function Settings() {
         }
       );
     } catch (error) {
-      //console.log(error);
+      console.log(error);
     }
   };
 
@@ -193,7 +193,7 @@ export default function Settings() {
             value={lastName}
             onChange={() => {
               setLastName(event.target.value);
-              //console.log(lastName);
+              console.log(lastName);
             }}
           ></input>
           <br></br>

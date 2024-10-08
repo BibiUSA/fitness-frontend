@@ -16,7 +16,7 @@ const Calendar = () => {
   }, []);
 
   for (let i = 0; i < week.length; i++) {
-    // //console.log(format(week[i], "yyyy-mm-dd"));
+    // console.log(format(week[i], "yyyy-mm-dd"));
     let date = new Date(week[i]);
     let formattedDate = date.toISOString().slice(0, 10);
 
@@ -26,7 +26,7 @@ const Calendar = () => {
       dates += `'${formattedDate}', `;
     }
   }
-  //console.log(data);
+  console.log(data);
 
   const tokenLogging = async () => {
     try {
@@ -42,7 +42,7 @@ const Calendar = () => {
             headers: headers,
           }
         );
-        //console.log(response.data.email);
+        console.log(response.data.email);
         setEmail(response.data.email);
         // return response.data; //return value for fetchAPI
 
@@ -51,7 +51,7 @@ const Calendar = () => {
         window.location = "/account";
       }
     } catch (error) {
-      //console.log(error);
+      console.log(error);
       window.location = "/account";
     }
   };
@@ -76,10 +76,10 @@ const Calendar = () => {
           },
         }
       );
-      // //console.log(response.data.data.rows);
+      // console.log(response.data.data.rows);
       setData(response.data.data.rows);
     } catch (error) {
-      //console.log(error);
+      console.log(error);
     }
   };
 
@@ -104,15 +104,15 @@ const Calendar = () => {
   };
   //deletes the specific plan scheduled for that day
   const deleteScheduledPlan = async (planDates) => {
-    //console.log("clicked");
+    console.log("clicked");
     try {
       const response = await axios.delete(
         `https://fitness-backend-je4w.onrender.com/calendar/${planDates.plan}`
       );
       fetchAPI(); //called to refresh the page
-      //console.log(response);
+      console.log(response);
     } catch (error) {
-      //console.log(error);
+      console.log(error);
     }
   };
 
@@ -171,7 +171,7 @@ const Calendar = () => {
       );
     }
   });
-  //console.log(week[0]);
+  console.log(week[0]);
 
   const time = (index) => {
     const date = new Date(week[index]);

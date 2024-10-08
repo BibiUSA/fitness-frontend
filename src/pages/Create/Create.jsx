@@ -7,7 +7,7 @@ export default function Create() {
   const createArray = [];
   const [email, setEmail] = useState(null);
   function stopRefresh(event) {
-    //console.log(event);
+    console.log(event);
   }
 
   const { plan } = useParams();
@@ -26,7 +26,7 @@ export default function Create() {
         }
       );
       setBackendData(response.data.data);
-      //console.log(response.data.data);
+      console.log(response.data.data);
     }
   };
 
@@ -44,7 +44,7 @@ export default function Create() {
             headers: headers,
           }
         );
-        //console.log(response.data.email);
+        console.log(response.data.email);
         setEmail(response.data.email);
         return response.data; //return value for fetchAPI
 
@@ -53,7 +53,7 @@ export default function Create() {
         window.location = "/account";
       }
     } catch (error) {
-      //console.log(error);
+      console.log(error);
     }
   };
 
@@ -61,14 +61,14 @@ export default function Create() {
     fetchAPI();
   }, []);
 
-  //console.log(backendData);
-  //console.log(planName);
+  console.log(backendData);
+  console.log(planName);
 
   // axios.post("/create", {});
   //sends data to back end and data base
   const handleChange = async (event) => {
     if (event.key === "Enter") {
-      //console.log("sending");
+      console.log("sending");
       event.preventDefault();
       try {
         const response = await axios.post(
@@ -80,17 +80,17 @@ export default function Create() {
             email: backendData[0].email,
           }
         );
-        //console.log(response);
+        console.log(response);
         event.target.value = "";
         fetchAPI();
       } catch (error) {
-        //console.log("error", error);
+        console.log("error", error);
       }
     }
   };
 
   const handleDelete = async (event) => {
-    //console.log(event.target.id);
+    console.log(event.target.id);
     try {
       const response = await axios.delete(
         `https://fitness-backend-je4w.onrender.com/api/${event.target.id}`,
@@ -98,13 +98,13 @@ export default function Create() {
           data: { id: event.target.id },
         }
       );
-      //console.log(response);
+      console.log(response);
       fetchAPI();
     } catch (error) {
-      //console.log("error: ", error);
+      console.log("error: ", error);
     }
   };
-  //console.log(backendData);
+  console.log(backendData);
 
   //spreads out the todo tasks
   const toDoTasks = backendData.map((obj) => {

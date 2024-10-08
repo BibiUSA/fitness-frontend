@@ -223,3 +223,40 @@ color: blue;
 .hidden{
     display:none;
 }
+
+
+
+@media only screen and (min-width: 800px) {
+    .SearchBar, #allPlans{
+        max-width: 800px;
+    }
+    .planTitle{
+        margin-left: 30vw;
+    }
+    .hr{
+        width:750px;
+    }
+    .editButton{
+        position: relative;
+       left:650px;
+    }
+    #addPlan{
+        position: absolute;
+        left:60vw;
+    }
+    .eachPlansLine{
+       width: 700px;
+    }
+    .scheduleIcon{
+        position:absolute;
+        left:1000px;
+    }
+  }
+
+  @media only screen and (min-width: 1500px) {
+    .scheduleIcon{
+        position:absolute;
+        left:1200px;
+    }
+    
+  }

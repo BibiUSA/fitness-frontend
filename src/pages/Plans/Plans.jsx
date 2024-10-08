@@ -55,14 +55,14 @@ export default function Plans() {
             headers: headers,
           }
         );
-        //console.log(response.data);
+        console.log(response.data);
         setEmail(response.data.email);
         return response.data; //return value for fetchAPI
       } else {
         window.location = "/account";
       }
     } catch (error) {
-      //console.log(error);
+      console.log(error);
     }
   };
 
@@ -78,7 +78,7 @@ export default function Plans() {
         }
       );
       setTotalPlans(response.data.data);
-      //console.log(userEmail.email);
+      console.log(userEmail.email);
     }
   };
 
@@ -86,8 +86,8 @@ export default function Plans() {
     fetchAPI();
   }, [plansAdded]);
 
-  //console.log(totalPlans);
-  //console.log(delPlanId);
+  console.log(totalPlans);
+  console.log(delPlanId);
 
   const removePlan = async () => {
     setDeleteWarning("hidden");
@@ -98,7 +98,7 @@ export default function Plans() {
       );
       setPlansAdded(plansAdded + 1);
     } catch (error) {
-      //console.log(error);
+      console.log(error);
     }
   };
 
@@ -154,7 +154,7 @@ export default function Plans() {
 
   //TRYING TO FIGURE OUT HOW TO DELETE THE WHOLE PLAN INCLUDING SCHEDULED DATES. HAVING TROUBLE SENDING PLAN ID AND DELETING BASED ON JUST THE ID
   function getConfirmation(obj) {
-    //console.log(obj.plan_id);
+    console.log(obj.plan_id);
     let id = obj.plan_id;
     setDelPlanId(`${id}`);
     setDelPlan(obj.plan);
@@ -190,9 +190,9 @@ export default function Plans() {
             task: "1995ActuallyAPlan", //used only for plans
           }
         );
-        //console.log(response);
+        console.log(response);
       } catch (error) {
-        //console.log("error", error);
+        console.log("error", error);
       }
       cancel();
       setPlansAdded(plansAdded + 1);
@@ -220,14 +220,14 @@ export default function Plans() {
   }
 
   function searching(event) {
-    //console.log(event.target.value);
+    console.log(event.target.value);
     setSearch(event.target.value);
   }
 
   function calendarClick(item) {
-    //console.log(item);
+    console.log(item);
     setCalendarPlan(item);
-    //console.log("calendar plan", calendarPlan);
+    console.log("calendar plan", calendarPlan);
     setShowCalendar("scheduleCalendar");
   }
 

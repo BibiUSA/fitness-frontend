@@ -25,3 +25,15 @@
    
 }
 
+@media only screen and (min-width: 800px) {
+   
+   .navbar{
+    display: flex;
+    justify-content: center;
+   }
+   .navIcon{
+    padding-left:150px;
+    padding-right:150px;
+   }
+  }
+

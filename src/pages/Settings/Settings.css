@@ -72,3 +72,25 @@ display: none;
     margin-left: 2.5vw;
     margin-top: 4vh;
 }
+
+@media only screen and (min-width: 800px) {
+    .Settings{
+        max-width: 800px;
+    }
+    .logOut{
+        max-width: 750px;
+        
+    }
+    .name{
+        max-width: 300px;
+    }
+    .save{
+        max-width: 700px;
+    }
+    .warning{
+        max-width: 700px;
+        position: absolute;
+        right:28vw;
+
+    }
+}

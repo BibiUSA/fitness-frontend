@@ -23,7 +23,7 @@
 
   .scheduledPlan{
     border-radius: 2vw;
-   width: 70%;
+   width: 90%;
    height:5vh;
     /* padding: 1.65vh; */
     text-align: center;
@@ -107,12 +107,26 @@
      border-radius: 3vw;
   }
   
-  /* .plans {
-   
-    border: 1px solid blue;
-    height:11vh;
-    
-   
-    
-  } */
-  
+  @media only screen and (min-width: 800px) {
+    .date{
+        max-width: 150px;
+        border-radius: 1vw;
+    }
+    .today{
+      max-width: 150px;
+      border-radius: 1vw;
+    }
+    .delete{
+      padding-left: 3vw;
+    }
+    .scheduledPlan{
+      border-radius: 1vw;
+    }
+    .day{
+      border-radius: 1vw;
+    }
+    .calendar-body {
+      border-radius: 1vw;
+     
+    }
+  }
