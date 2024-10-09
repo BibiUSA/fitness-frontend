@@ -133,7 +133,22 @@
     bottom:10vh;
     
   }
+  .blue{
+    color:blue;
+}
 
   .hidden{
     display: none;
   }
+
+  @media only screen and (min-width: 800px) {
+    .react-calendar {
+      width:800px;
+    }
+    .scheduled{
+      width:800px;
+      left:0vw;
+    }
+   
+
+}

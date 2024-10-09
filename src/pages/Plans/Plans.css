@@ -69,12 +69,13 @@ text-align: center;
     position: relative;
     left:-10vw;
     color:blue;
+    cursor: pointer;
 }
 
 #addNewPlan{
     position: relative;
     left:10vw;
-    
+    cursor: pointer;
 }
 
 
@@ -91,6 +92,7 @@ text-align: center;
     box-shadow: 5px 3px 5px   rgb(183, 168, 195);
     color:white;
     background-color: rgb(145, 70, 213);
+    cursor: pointer;
 }
 .deleteButton{
     background-color: red;
@@ -109,6 +111,7 @@ text-align: center;
     padding: 0;  
     font-size: 20px; /* Adjust as needed */
     line-height: 1; 
+    cursor: pointer;
 }
 
 .editButton{
@@ -122,6 +125,7 @@ text-align: center;
     top:3vh;
     left:65vw;
     margin-bottom: 3vh;
+    cursor: pointer;
 }
 .hr{
     width:85vw;
@@ -152,6 +156,9 @@ text-align: center;
     width:72vw;
     
 }
+.eachPlans:hover{
+    color:rgb(145, 70, 213);
+}
 
 li::marker{
     font-size: 1.75rem;
@@ -160,6 +167,7 @@ li::marker{
 .plansLink{
     text-decoration: none;
     color:black;
+
 }
 
 .planExistWarning{
@@ -189,14 +197,21 @@ li::marker{
 .cancelConfirm{
     padding-right: 25vw;
     color:blue;
+    cursor: pointer;
 }
 .yesConfirm{
     color:red;
+    cursor: pointer;
 }
 
 .scheduleIcon{
     position:absolute;
     right:10vw;
+    cursor: pointer;
+}
+
+.scheduleIcon:hover{
+    color:rgba(9, 159, 254);
 }
 .scheduleCalendar{
     width:100vw;
@@ -241,7 +256,7 @@ color: blue;
        left:650px;
     }
     #addPlan{
-        position: absolute;
+        position: fixed;
         left:60vw;
     }
     .eachPlansLine{
@@ -249,14 +264,50 @@ color: blue;
     }
     .scheduleIcon{
         position:absolute;
-        left:1000px;
+        left:800px;
     }
+    .deleteButton{
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+
+    }
+    .plansLink{
+       
+        width:570px;
+    
+    }
+    .confirmDelete{
+        width:800px;
+        left: 28vw;
+        
+    }
+    .scheduleCalendarTitle{
+       
+        width:700px;
+    }
+    .scheduleCalendar{
+        width:800px;
+    }
+    #newPlanBox{
+        width: 800px;
+    }
+    #newPlan{
+        max-width: 700px;
+        height:8px;
+        
+    }
+    .newPlanButtons{
+        margin-top: 3vh;
+    }  
+   
   }
 
-  @media only screen and (min-width: 1500px) {
+  @media only screen and (min-width: 1300px) {
     .scheduleIcon{
         position:absolute;
-        left:1200px;
+        left:1050px;
     }
+  
     
   }

@@ -10,13 +10,23 @@ const Calendar = () => {
   const [email, setEmail] = useState([]);
   let dates = "";
   const [data, setData] = useState([]);
+  const [hideBox, setHideBox] = useState("hidden"); //class to hide add Plan Box
+  const [addBlue, setAddBlue] = useState("newPlanButtons gray"); //changes add button to blue when there's an input
+  const [newPlanInput, setNewPlanInput] = useState(""); //the input typed into a the plan name
+  const [planWarning, setPlanWarning] = useState("hidden"); //
+  const [warningMessage, setWarningMessage] = useState(
+    //changes warning message if no plan input vs plan already exists
+    "Plan already exists.Try a different name."
+  );
+  const [plansAdded, setPlansAdded] = useState(0); //used to refetch full data
+  const [holdDate, setHoldDate] = useState("");
 
   useEffect(() => {
     tokenLogging();
   }, []);
 
   for (let i = 0; i < week.length; i++) {
-    // console.log(format(week[i], "yyyy-mm-dd"));
+    // //console.log(format(week[i], "yyyy-mm-dd"));
     let date = new Date(week[i]);
     let formattedDate = date.toISOString().slice(0, 10);
 
@@ -26,7 +36,7 @@ const Calendar = () => {
       dates += `'${formattedDate}', `;
     }
   }
-  console.log(data);
+  //console.log(data);
 
   const tokenLogging = async () => {
     try {
@@ -42,7 +52,7 @@ const Calendar = () => {
             headers: headers,
           }
         );
-        console.log(response.data.email);
+        //console.log(response.data.email);
         setEmail(response.data.email);
         // return response.data; //return value for fetchAPI
 
@@ -51,7 +61,7 @@ const Calendar = () => {
         window.location = "/account";
       }
     } catch (error) {
-      console.log(error);
+      //console.log(error);
       window.location = "/account";
     }
   };
@@ -66,7 +76,7 @@ const Calendar = () => {
   //to get data of all plans in the dates
 
   const fetchAPI = async () => {
-    console.log(dates);
+    //console.log(dates);
     try {
       const response = await axios.get(
         `https://fitness-backend-je4w.onrender.com/calendar`,
@@ -77,10 +87,10 @@ const Calendar = () => {
           },
         }
       );
-      console.log(response.data.data.rows);
+      //console.log(response.data.data.rows);
       setData(response.data.data.rows);
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   };
 
@@ -88,13 +98,70 @@ const Calendar = () => {
     if (email) {
       fetchAPI();
     }
-  }, [dates, email]);
+  }, [dates, email, plansAdded]);
 
   useEffect(() => {
     const weekStart = startOfWeek(currentDate);
     const days = Array.from({ length: 7 }, (_, i) => addDays(weekStart, i));
     setWeek(days);
   }, [currentDate]);
+
+  function showBox(day) {
+    let dateNow = new Date(day).toISOString().slice(0, 10);
+    setHoldDate(dateNow);
+    setHideBox("addDayPlanBox");
+  }
+
+  function cancel() {
+    setNewPlanInput("");
+    setHideBox("hidden");
+    setPlanWarning("hidden");
+  }
+
+  //when addplan  input has a value, changes color of add button
+  function handleChange(event) {
+    setNewPlanInput(event.target.value);
+    if (newPlanInput.length > 0) {
+      setAddBlue("newPlanButtons blue");
+    } else {
+      setAddBlue("newPlanButtons gray");
+    }
+  }
+
+  //adds the plan to the specific date
+  const addPlan = async (event) => {
+    if (newPlanInput.length < 1) {
+      setPlanWarning("planExistWarning");
+      setWarningMessage("Enter a plan name.");
+      return;
+    } else {
+      //console.log(holdDate);
+      for (let i = 0; i < data.length; i++) {
+        if (data[i].plan === `${newPlanInput}${holdDate}`) {
+          setPlanWarning("planExistWarning");
+          setWarningMessage("Plan already exists.Try a different name.");
+          return;
+        }
+      }
+      try {
+        const response = await axios.post(
+          `https://fitness-backend-je4w.onrender.com/plans/datePlan/`,
+          {
+            plan: `${newPlanInput}${holdDate}`,
+            task: "1995ActuallyAPlan",
+            date: holdDate,
+            email: email,
+          }
+        );
+        //console.log(response);
+        window.location = `/create/${newPlanInput}${holdDate}`;
+      } catch (error) {
+        //console.log("error", error);
+      }
+      cancel();
+      setPlansAdded(plansAdded + 1);
+    }
+  };
 
   const goToPreviousWeek = () => {
     setCurrentDate(subWeeks(currentDate, 1));
@@ -105,15 +172,15 @@ const Calendar = () => {
   };
   //deletes the specific plan scheduled for that day
   const deleteScheduledPlan = async (planDates) => {
-    console.log(planDates);
+    //console.log(planDates);
     try {
       const response = await axios.delete(
         `https://fitness-backend-je4w.onrender.com/calendar/${planDates.plan}`
       );
       fetchAPI(); //called to refresh the page
-      console.log(response);
+      //console.log(response);
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   };
 
@@ -140,12 +207,12 @@ const Calendar = () => {
       }
     });
 
-    // console.log("planDates", planDates);
+    // //console.log("planDates", planDates);
 
     const date = new Date(day);
     const dayName = date.toLocaleDateString("en-US", { weekday: "short" });
     //if plan is scheduled, then it is shown
-    if (hasTask.length > 0) {
+    if (hasTask.length == 3) {
       return (
         <div key={day.toString()} className="day">
           <div className={findToday()}>
@@ -172,6 +239,42 @@ const Calendar = () => {
           })}
         </div>
       );
+      //if less than 3 plans
+    } else if (hasTask.length > 0) {
+      return (
+        <div key={day.toString()} className="day">
+          <div className={findToday()}>
+            <h2>{format(day, "dd")}</h2>
+            {dayName}
+          </div>
+
+          {hasTask.map((item) => {
+            return (
+              <section className="dailyTask">
+                <Link to={`/create/${item.plan}`} className="scheduledPlan">
+                  {/* <div className="scheduledPlan"> */}
+                  {item.plan.slice(0, -10)}
+                  {/* </div> */}
+                </Link>
+                <div
+                  className="delete"
+                  onClick={() => deleteScheduledPlan(item)}
+                >
+                  Delete
+                </div>
+              </section>
+            );
+          })}
+          <input
+            type="button"
+            className="addDayPlan"
+            value="+"
+            onClick={() => {
+              showBox(day);
+            }}
+          ></input>
+        </div>
+      );
     } else {
       //if plan isn't scheduled for that date
       return (
@@ -180,13 +283,21 @@ const Calendar = () => {
             <h2>{format(day, "dd")}</h2>
             {dayName}
           </div>
+          <input
+            type="button"
+            className="addDayPlan"
+            value="+"
+            onClick={() => {
+              showBox(day);
+            }}
+          ></input>
         </div>
       );
     }
   });
 
-  console.log(data);
-  console.log(week[0]);
+  //console.log(data);
+  //console.log(week[0]);
 
   const time = (index) => {
     const date = new Date(week[index]);
@@ -197,7 +308,7 @@ const Calendar = () => {
   return (
     <div className="weekly-calendar">
       <div className="calendar-header">
-        <button onClick={goToPreviousWeek}>
+        <button className="nextprev" onClick={goToPreviousWeek}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -211,7 +322,7 @@ const Calendar = () => {
           </svg>
         </button>
         <h2>{format(currentDate, "MMMM yyyy")}</h2>
-        <button onClick={goToNextWeek}>
+        <button className="nextprev" onClick={goToNextWeek}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -227,6 +338,37 @@ const Calendar = () => {
       </div>
       <div className="calendar-body">
         <div className="week">{spreadPlan}</div>
+
+        {/* box to add the enter the new plan */}
+        <div id="newPlanBox" className={hideBox}>
+          <div id="newPlanButtons">
+            <input
+              type="button"
+              className="newPlanButtons"
+              id="cancelNewPlan"
+              value="Cancel"
+              onClick={cancel}
+            ></input>
+
+            <input
+              type="button"
+              className={addBlue}
+              id="addNewPlan"
+              value="Add"
+              onClick={addPlan}
+            ></input>
+          </div>
+          <input
+            type="textarea"
+            placeholder="Enter Plan Name"
+            id="newPlan"
+            name="newPlan"
+            value={newPlanInput}
+            onChange={handleChange}
+          ></input>
+          <label htmlFor="newPlan"></label>
+          <p className={planWarning}>{warningMessage}</p>
+        </div>
       </div>
     </div>
   );

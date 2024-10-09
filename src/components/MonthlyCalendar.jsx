@@ -12,8 +12,8 @@ export default function MonthlyCalendar(data) {
   const [scheduled, setScheduled] = useState("hidden");
   const [planNum, setPlanNum] = useState(0);
   const [planLength, setPlanLength] = useState(0);
-  console.log(data);
-  console.log("DATE", date);
+  //console.log(data);
+  //console.log("DATE", date);
   // if (data.email === null) {
   //   window.location = "/account";
   // }
@@ -36,17 +36,17 @@ export default function MonthlyCalendar(data) {
         setScheduleMess("3 plans per day limit reached.");
         setScheduled("scheduled");
       } else {
-        console.log(finalResult);
+        //console.log(finalResult);
         data.onClick();
       }
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   };
 
   //when clicked, the date gets set. Which triggers the function to check if the plan is already scheduled.
   function handleChange(event) {
-    console.log(event.toISOString().split("T")[0]);
+    //console.log(event.toISOString().split("T")[0]);
     setDate(event.toISOString().split("T")[0]); //need to wait till this state is set
     //need to comment this out so the date is goint through
 
@@ -64,7 +64,7 @@ export default function MonthlyCalendar(data) {
     }
     checkPlanScheduled();
   }, [date]);
-  console.log(data.plan);
+  //console.log(data.plan);
 
   return (
     <>
