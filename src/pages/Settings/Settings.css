@@ -94,7 +94,7 @@ display: none;
 .logOut{
     border: none;
     width: 87vw;
-    padding: 5vw 2vw;
+    padding: 2vw 2vw;
     /* margin-left: 2.5vw;
     margin-top: 4vh; */
     margin: 4vh auto;
@@ -120,7 +120,7 @@ display: none;
     }
     .logOut{
         max-width: 750px;
-        
+        max-height: 10px;
         
     }
     .name{
