@@ -3,6 +3,7 @@ import { format, startOfWeek, addDays, subWeeks, addWeeks } from "date-fns";
 import "./Calendar.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { API } from "../../Config/config";
 
 const Calendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -26,7 +27,7 @@ const Calendar = () => {
   }, []);
 
   for (let i = 0; i < week.length; i++) {
-    // //console.log(format(week[i], "yyyy-mm-dd"));
+    // console.log(format(week[i], "yyyy-mm-dd"));
     let date = new Date(week[i]);
     let formattedDate = date.toISOString().slice(0, 10);
 
@@ -36,7 +37,7 @@ const Calendar = () => {
       dates += `'${formattedDate}', `;
     }
   }
-  //console.log(data);
+  console.log(data);
 
   const tokenLogging = async () => {
     try {
@@ -46,13 +47,13 @@ const Calendar = () => {
       };
       if (token != null) {
         const response = await axios.post(
-          `https://fitness-backend-je4w.onrender.com/account/protect`,
+          `http://localhost:3001/account/protect`,
           {},
           {
             headers: headers,
           }
         );
-        //console.log(response.data.email);
+        console.log(response.data.email);
         setEmail(response.data.email);
         // return response.data; //return value for fetchAPI
 
@@ -61,7 +62,7 @@ const Calendar = () => {
         window.location = "/account";
       }
     } catch (error) {
-      //console.log(error);
+      console.log(error);
       window.location = "/account";
     }
   };
@@ -76,21 +77,18 @@ const Calendar = () => {
   //to get data of all plans in the dates
 
   const fetchAPI = async () => {
-    //console.log(dates);
+    console.log(dates);
     try {
-      const response = await axios.get(
-        `https://fitness-backend-je4w.onrender.com/calendar`,
-        {
-          params: {
-            dates: dates,
-            email: email,
-          },
-        }
-      );
-      //console.log(response.data.data.rows);
+      const response = await axios.get(`${API.apiUri}/calendar`, {
+        params: {
+          dates: dates,
+          email: email,
+        },
+      });
+      console.log(response.data.data.rows);
       setData(response.data.data.rows);
     } catch (error) {
-      //console.log(error);
+      console.log(error);
     }
   };
 
@@ -135,7 +133,7 @@ const Calendar = () => {
       setWarningMessage("Enter a plan name.");
       return;
     } else {
-      //console.log(holdDate);
+      console.log(holdDate);
       for (let i = 0; i < data.length; i++) {
         if (data[i].plan === `${newPlanInput}${holdDate}`) {
           setPlanWarning("planExistWarning");
@@ -145,7 +143,7 @@ const Calendar = () => {
       }
       try {
         const response = await axios.post(
-          `https://fitness-backend-je4w.onrender.com/plans/datePlan/`,
+          `http://localhost:3001/plans/datePlan/`,
           {
             plan: `${newPlanInput}${holdDate}`,
             task: "1995ActuallyAPlan",
@@ -153,10 +151,10 @@ const Calendar = () => {
             email: email,
           }
         );
-        //console.log(response);
+        console.log(response);
         window.location = `/create/${newPlanInput}${holdDate}`;
       } catch (error) {
-        //console.log("error", error);
+        console.log("error", error);
       }
       cancel();
       setPlansAdded(plansAdded + 1);
@@ -172,15 +170,15 @@ const Calendar = () => {
   };
   //deletes the specific plan scheduled for that day
   const deleteScheduledPlan = async (planDates) => {
-    //console.log(planDates);
+    console.log(planDates);
     try {
       const response = await axios.delete(
-        `https://fitness-backend-je4w.onrender.com/calendar/${planDates.plan}`
+        `http://localhost:3001/calendar/${planDates.plan}`
       );
       fetchAPI(); //called to refresh the page
-      //console.log(response);
+      console.log(response);
     } catch (error) {
-      //console.log(error);
+      console.log(error);
     }
   };
 
@@ -207,7 +205,7 @@ const Calendar = () => {
       }
     });
 
-    // //console.log("planDates", planDates);
+    // console.log("planDates", planDates);
 
     const date = new Date(day);
     const dayName = date.toLocaleDateString("en-US", { weekday: "short" });
@@ -296,8 +294,8 @@ const Calendar = () => {
     }
   });
 
-  //console.log(data);
-  //console.log(week[0]);
+  console.log(data);
+  console.log(week[0]);
 
   const time = (index) => {
     const date = new Date(week[index]);

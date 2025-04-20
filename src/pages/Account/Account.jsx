@@ -9,35 +9,40 @@ import axios from "axios";
 export default function Account() {
   const [email, setEmail] = useState("");
 
-  //console.log(email);
+  console.log(email);
   useEffect(() => {
-    loggingIn();
+    if (email.length > 0) {
+      loggingIn();
+    } else {
+      return;
+    }
   }, [email]);
 
+  //logs in if there is an email
   const loggingIn = async () => {
-    //console.log("logging In");
-    if (email.length > 0) {
-      //console.log("email sent");
-      try {
-        const response = await axios.post(
-          `https://fitness-backend-je4w.onrender.com/account`,
-          {
-            email: email,
-          },
-          { withCredentials: true }
-        );
-        //console.log(response);
-        localStorage.setItem("auth_token", response.data.token);
+    console.log("logging In");
 
-        window.location = "/";
-      } catch (error) {
-        //console.log(error);
-      }
+    console.log("email sent");
+    try {
+      const response = await axios.post(
+        `http://localhost:3001/account`,
+        {
+          email: email,
+        },
+        { withCredentials: true }
+      );
+      console.log(response);
+      localStorage.setItem("auth_token", response.data.token);
+
+      window.location = "/";
+    } catch (error) {
+      console.log(error);
     }
   };
 
+  //logs in if there is a token in the localstorage
   const tokenLogging = async () => {
-    //console.log("tokenLoggin");
+    console.log("tokenLoggin");
     try {
       const token = localStorage.getItem("auth_token");
       const headers = {
@@ -45,18 +50,18 @@ export default function Account() {
       };
       if (token != null) {
         const response = await axios.post(
-          `https://fitness-backend-je4w.onrender.com/account/protect`,
+          `http://localhost:3001/account/protect`,
           {},
           {
             headers: headers,
           }
         );
-        //console.log(response.data.email);
+        console.log(response.data.email);
         setEmail(response.data.email);
       }
       // window.location = "/settings";
     } catch (error) {
-      //console.log(error);
+      console.log(error);
     }
   };
   useEffect(() => {
@@ -80,7 +85,7 @@ export default function Account() {
               setEmail(credentialResponseDecoded.email);
             }}
             onError={() => {
-              //console.log("Login Failed");
+              console.log("Login Failed");
             }}
           />
         </div>

@@ -94,11 +94,13 @@ display: none;
 .logOut{
     border: none;
     width: 87vw;
-    padding: 2vw;
-    margin-left: 2.5vw;
-    margin-top: 4vh;
+    padding: 5vw 2vw;
+    /* margin-left: 2.5vw;
+    margin-top: 4vh; */
+    margin: 4vh auto;
     cursor: pointer;
     max-height: 8px;
+    
 }
 .logOut:hover{
     background-color: rgba(9, 159, 254);
@@ -118,6 +120,7 @@ display: none;
     }
     .logOut{
         max-width: 750px;
+        
         
     }
     .name{

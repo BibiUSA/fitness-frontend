@@ -26,6 +26,8 @@
     margin-left:20vw;
     margin-right: 20vw;
     margin-bottom: 18vh;
+    display: flex;
+    justify-content: center;
     
 }
 

@@ -11,6 +11,7 @@
 
 .searchSection{
 text-align: center;
+
 }
 
 #allPlans{
@@ -135,6 +136,7 @@ text-align: center;
 }
 .eachPlansDiv{
     padding-top: 1vh;
+    
 }
 .eachPlansDiv:active{
     background-color: gray;
@@ -153,7 +155,8 @@ text-align: center;
     margin-left: 5vw;
     font-size: 1.25rem;
     list-style-type: circle;
-    width:72vw;
+    width:52vw;
+    max-width: 800px;
     
 }
 .eachPlans:hover{
@@ -185,6 +188,7 @@ li::marker{
     left:10vw;
     width:80vw;
     border-radius: 5vw;
+   
 }
 .confirmButton{
     border:none;
@@ -279,7 +283,8 @@ color: blue;
     }
     .confirmDelete{
         width:800px;
-        left: 28vw;
+        margin: 0 auto;
+        left: calc(50vw - 400px)
         
     }
     .scheduleCalendarTitle{

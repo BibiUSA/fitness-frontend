@@ -28,7 +28,7 @@ export default function CalendarManual() {
   const dayOneDay = dayOne.getDay();
   const lastDay = new Date(year, month + 1, 0);
   const monthLength = lastDay.getDate();
-  //console.log(dayOne, "+", dayOneDay, "+", lastDay, "+", monthLength);
+  console.log(dayOne, "+", dayOneDay, "+", lastDay, "+", monthLength);
   const emptyDatesArr = []; //main purpose is it to use it to map the empty div
   const monthDatesArr = []; //main purpose to map to create the divs with numbers
 
@@ -69,7 +69,7 @@ export default function CalendarManual() {
   //   setMonthDatesArr[""];
   //   setClickedDate("");
 
-  //console.log(emptyDatesArr);
+  console.log(emptyDatesArr);
   return (
     <>
       <div className="calendar">

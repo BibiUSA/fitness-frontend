@@ -15,7 +15,7 @@ export default function Settings() {
   const [profileSetting, setProfileSetting] = useState("hidden");
 
   const tokenLogging = async () => {
-    //console.log("tokenLoggin");
+    console.log("tokenLoggin");
     try {
       const token = localStorage.getItem("auth_token");
       const headers = {
@@ -23,7 +23,7 @@ export default function Settings() {
       };
       if (token != null) {
         const response = await axios.post(
-          `https://fitness-backend-je4w.onrender.com/account/protect`,
+          `http://localhost:3001/account/protect`,
           {},
           {
             headers: headers,
@@ -34,7 +34,7 @@ export default function Settings() {
         window.location = "/account";
       }
     } catch (error) {
-      //console.log(error);
+      console.log(error);
     }
   };
 
@@ -42,27 +42,27 @@ export default function Settings() {
     tokenLogging();
   }, []);
 
-  //console.log(email);
+  console.log(email);
 
   const removeAllPlans = async () => {
     try {
       const response = await axios.delete(
-        `https://fitness-backend-je4w.onrender.com/account/${email}`
+        `http://localhost:3001/account/${email}`
       );
-      //console.log(response);
+      console.log(response);
     } catch (error) {
-      //console.log(error);
+      console.log(error);
     }
   };
 
   const removeAccount = async () => {
     try {
       const response = await axios.delete(
-        `https://fitness-backend-je4w.onrender.com/account/remove/${email}`
+        `http://localhost:3001/account/remove/${email}`
       );
-      //console.log(response);
+      console.log(response);
     } catch (error) {
-      //console.log(error);
+      console.log(error);
     }
   };
 
@@ -99,16 +99,13 @@ export default function Settings() {
 
   const saveName = async () => {
     try {
-      const response = axios.post(
-        "https://fitness-backend-je4w.onrender.com/account/addName",
-        {
-          firstName: firstName,
-          lastName: lastName,
-          email: email,
-        }
-      );
+      const response = axios.post("http://localhost:3001/account/addName", {
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+      });
     } catch (error) {
-      //console.log(error);
+      console.log(error);
     }
   };
 
@@ -193,7 +190,7 @@ export default function Settings() {
             value={lastName}
             onChange={() => {
               setLastName(event.target.value);
-              //console.log(lastName);
+              console.log(lastName);
             }}
           ></input>
           <br></br>
