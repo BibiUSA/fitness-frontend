@@ -6,7 +6,7 @@ export const tokenLogging = async () => {
     };
     if (token != null) {
       const response = await axios.post(
-        `http://localhost:3001/account/protect`,
+        `https://fitness-backend-je4w.onrender.com/account/protect`,
         {},
         {
           headers: headers,

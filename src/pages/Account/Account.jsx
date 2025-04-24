@@ -25,7 +25,7 @@ export default function Account() {
     console.log("email sent");
     try {
       const response = await axios.post(
-        `http://localhost:3001/account`,
+        `https://fitness-backend-je4w.onrender.com/account`,
         {
           email: email,
         },
@@ -50,7 +50,7 @@ export default function Account() {
       };
       if (token != null) {
         const response = await axios.post(
-          `http://localhost:3001/account/protect`,
+          `https://fitness-backend-je4w.onrender.com/account/protect`,
           {},
           {
             headers: headers,

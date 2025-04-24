@@ -19,9 +19,12 @@ export default function Create() {
   const fetchAPI = async () => {
     const userEmail = await tokenLogging();
     if (userEmail) {
-      const response = await axios.get(`http://localhost:3001/api/${plan}`, {
-        params: { email: userEmail.email },
-      });
+      const response = await axios.get(
+        `https://fitness-backend-je4w.onrender.com/api/${plan}`,
+        {
+          params: { email: userEmail.email },
+        }
+      );
       setBackendData(response.data.data);
       console.log(response.data.data);
     }
@@ -35,7 +38,7 @@ export default function Create() {
       };
       if (token != null) {
         const response = await axios.post(
-          `http://localhost:3001/account/protect`,
+          `https://fitness-backend-je4w.onrender.com/account/protect`,
           {},
           {
             headers: headers,
@@ -68,12 +71,15 @@ export default function Create() {
       console.log("sending");
       event.preventDefault();
       try {
-        const response = await axios.post(`http://localhost:3001/api/create`, {
-          data: event.target.value,
-          plan: planName,
-          plan_id: backendData[0].plan_id,
-          email: backendData[0].email,
-        });
+        const response = await axios.post(
+          `https://fitness-backend-je4w.onrender.com/api/create`,
+          {
+            data: event.target.value,
+            plan: planName,
+            plan_id: backendData[0].plan_id,
+            email: backendData[0].email,
+          }
+        );
         console.log(response);
         event.target.value = "";
         fetchAPI();
@@ -87,7 +93,7 @@ export default function Create() {
     console.log(event.target.id);
     try {
       const response = await axios.delete(
-        `http://localhost:3001/api/${event.target.id}`,
+        `https://fitness-backend-je4w.onrender.com/api/${event.target.id}`,
         {
           data: { id: event.target.id },
         }

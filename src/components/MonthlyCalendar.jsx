@@ -21,7 +21,9 @@ export default function MonthlyCalendar(data) {
   const checkPlanScheduled = async () => {
     try {
       const result = await axios.get(
-        `http://localhost:3001/api/check/${data.plan + date}`,
+        `https://fitness-backend-je4w.onrender.com/api/check/${
+          data.plan + date
+        }`,
         {
           params: { email: data.email, date: date },
         }

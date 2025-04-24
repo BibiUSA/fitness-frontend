@@ -47,7 +47,7 @@ const Calendar = () => {
       };
       if (token != null) {
         const response = await axios.post(
-          `http://localhost:3001/account/protect`,
+          `https://fitness-backend-je4w.onrender.com/account/protect`,
           {},
           {
             headers: headers,
@@ -143,7 +143,7 @@ const Calendar = () => {
       }
       try {
         const response = await axios.post(
-          `http://localhost:3001/plans/datePlan/`,
+          `https://fitness-backend-je4w.onrender.com/plans/datePlan/`,
           {
             plan: `${newPlanInput}${holdDate}`,
             task: "1995ActuallyAPlan",
@@ -173,7 +173,7 @@ const Calendar = () => {
     console.log(planDates);
     try {
       const response = await axios.delete(
-        `http://localhost:3001/calendar/${planDates.plan}`
+        `https://fitness-backend-je4w.onrender.com/calendar/${planDates.plan}`
       );
       fetchAPI(); //called to refresh the page
       console.log(response);
